@@ -1,7 +1,15 @@
 import { users } from "../db";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 function Home() {
+  const [readSearchParams, setSearchParams] = useSearchParams();
+  console.log(readSearchParams.has("ray"));
+  const changeURL = () => {
+    setSearchParams({
+      day: "today",
+      tomorrow: "123",
+    });
+  };
   return (
     <div>
       <h1>Users</h1>
@@ -12,6 +20,7 @@ function Home() {
           </li>
         ))}
       </ul>
+      <button onClick={changeURL}>Change URL</button>
     </div>
   );
 }
